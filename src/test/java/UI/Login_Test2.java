@@ -11,7 +11,7 @@ import org.openqa.selenium.support.locators.RelativeLocator;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
-public class Login_Test {
+public class Login_Test2 {
 
 	public static String browser = "firefox"; // External configuration
 	public static WebDriver driver;
@@ -31,18 +31,28 @@ public class Login_Test {
 		// Open Sauce Demo website
 		driver.get("https://www.saucedemo.com/");
 
-		// Find the username field and enter username
-		driver.findElement(By.id("user-name")).sendKeys("standard_user");
-
-		// Find the password field and enter password
-		driver.findElement(By.id("password")).sendKeys("secret_sauce");
-
-		// Find and click the login button by RelativeLocator
-		WebElement loginBtn = driver.findElement(RelativeLocator.with(By.tagName("input")).below(By.id("password")));
-		loginBtn.click();
-
+		//Basic Methods
 		
+		//Manage
+		driver.manage().window().maximize();
 		
+		//current URL
+		String currentUrl = driver.getCurrentUrl();
+		System.out.println(currentUrl);
+		
+		//Get Title
+		String Title = driver.getTitle();
+		System.out.println(Title);
+				
+		//page Source
+		String pgsource = driver.getPageSource();
+		System.out.println(pgsource);
+		
+		//navigate 
+		driver.navigate().to("https://google.com");
+		
+		//Quit browser
+		driver.quit();
 		
 
 		// Close the browser window
