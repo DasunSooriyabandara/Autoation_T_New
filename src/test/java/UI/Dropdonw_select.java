@@ -8,6 +8,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.locators.RelativeLocator;
+import org.openqa.selenium.support.ui.Select;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
@@ -34,20 +35,13 @@ public class Dropdonw_select {
 		// Manage
 		driver.manage().window().maximize();
 		
-		driver.findElement(By.xpath("//*[@id=\"CybotCookiebotDialogBodyLevelButtonLevelOptinAllowAll\"]")).click();
+			
 		
-		driver.findElement(By.cssSelector("#field0 > div > input ")).sendKeys("test@gmail.com");
-		driver.findElement(By.cssSelector("#field0 > div > input")).clear();
-		
-		System.out.println(driver.findElement(By.name("email")).getAttribute("class"));
-		System.out.println(driver.findElement(By.xpath("//*[@id=\"field1\"]/div/input")).getCssValue("background-color"));
-		System.out.println(driver.findElement(By.xpath("//*[@id=\"field1\"]/div/input")).getSize());
-		System.out.println(driver.findElement(By.xpath("//*[@id=\"field1\"]/div/input")).getTagName());
-		System.out.println(driver.findElement(By.xpath("//*[@id=\"field1\"]/div/input")).getLocation());
-		System.out.println(driver.findElement(By.xpath("//*[@id=\"field1\"]/div/input")).getText());
-		System.out.println(driver.findElement(By.xpath("//*[@id=\"field1\"]/div/input")).isDisplayed());
-		System.out.println(driver.findElement(By.xpath("//*[@id=\"field1\"]/div/input")).isEnabled());
-		System.out.println(driver.findElement(By.xpath("//*[@id=\"field1\"]/div/input")).isSelected());
+		WebElement ddown = driver.findElement(By.name("employees_c"));
+		Select select = new Select(ddown);
+		select.deselectByValue("51 - 100 employees");
+		select.selectByVisibleText("level1");
+		select.selectByIndex(5);
 //	//Quit browser
 		driver.quit();
 
