@@ -1,5 +1,7 @@
 package UI;
 
+import java.util.List;
+
 import org.openqa.selenium.By;
 
 import org.openqa.selenium.WebElement;
@@ -12,7 +14,7 @@ import org.openqa.selenium.support.ui.Select;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
-public class Dropdonw_select {
+public class Print_all_links_in_the_page {
 
 	public static String browser = "chrome"; // External configuration
 	public static WebDriver driver;
@@ -35,31 +37,17 @@ public class Dropdonw_select {
 		// Manage
 		driver.manage().window().maximize();
 
-		// -----------------------------SINGLE SELECT DROPDOWN---------------------------------------------------
-		WebElement ddown = driver.findElement(By.name("employees_c"));
-		Select select = new Select(ddown);
-		select.deselectByValue("51 - 100 employees");
-		select.selectByVisibleText("level1");
-		select.selectByIndex(5);
-		//Quit browser
-				driver.quit();
+//		Accepct cookies
+		driver.findElement(By.xpath("/html/body/div[1]/div")).click();
 
-		//------------------------------- MULTI SELECT DROPDOWN---------------------------------------------------
-//		driver.get("https://carbondesignsystem.com/components/dropdown/usage/");
-//
-//		// Manage
-//		driver.manage().window().maximize();
-//		
-//		WebElement ddown = driver.findElement(By.id("downshift-47-toggle-button"));
-//		Select select = new Select(ddown);
-//		
-//		select.deselectByValue("51 - 100 employees");
-		
-//Quit browser
-		driver.quit();
+		List<WebElement> alltags = driver.findElements(By.tagName("a"));
+		System.out.println("Total tagsare:" + alltags.size());
 
-		// Close the browser window
-		// driver.quit();
+		for (int i = 0; i < alltags.size(); i++) {
+			System.out.println("Links on the page" + alltags.get(i).getAttribute("href"));
+			System.out.println("Links on the page" + alltags.get(i).getText());
+			System.out.println("------------------------------------");
+		}
 
 	}
 
