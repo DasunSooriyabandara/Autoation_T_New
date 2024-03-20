@@ -38,8 +38,8 @@ public class Auto_suggest_DropDown {
 		// DROPDOWN---------------------------------------------------
 		driver.findElement(By.xpath("//span[text()='From']")).click();
 
-		((WebElement) driver.findElements(By.xpath("//input[@placeholder='From']"))).sendKeys("Sydney");
-		List<WebElement> from = driver.findElements(By.xpath("//input[@placeholder='From']"));
+		((WebElement) driver.findElements(By.className("react-autosuggest__input react-autosuggest__input--open"))).sendKeys("Sydney");
+		WebElement from = (WebElement) driver.findElements(By.xpath("//input[@placeholder='From']"));
 		// Thread.sleep(2000);
 		((WebElement) from).sendKeys(Keys.ARROW_DOWN);
 		((WebElement) from).sendKeys(Keys.ENTER);
