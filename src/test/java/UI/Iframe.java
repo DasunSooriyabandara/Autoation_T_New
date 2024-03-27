@@ -36,21 +36,21 @@ public class Iframe {
         
         
         //............................Iframe access............
-      //.....................................Iframe access by INDEX ............
-        
-        driver.switchTo().frame(0);
-        driver.findElement(By.xpath("/html/body/button")).click();
+//      //.....................................Iframe access by INDEX ............
+//        
+//        driver.switchTo().frame(0);
+//        driver.findElement(By.xpath("/html/body/button")).click();
         
       //.....................................Iframe access by ID ............
         
         driver.switchTo().frame("iframeResult");
         driver.findElement(By.xpath("/html/body/button")).click();
         
-     //.....................................Iframe access by Web Element ............
-        WebElement frame1 = driver.findElement(By.id("iframeResult"));
-        driver.switchTo().frame(frame1);
-        driver.findElement(By.xpath("/html/body/button")).click();
-        driver.switchTo().parentFrame();
-        System.out.println(driver.getTitle());
+//     //.....................................Iframe access by Web Element ............
+//        WebElement frame1 = driver.findElement(By.id("iframeResult"));
+//        driver.switchTo().frame(frame1);
+//        driver.findElement(By.xpath("/html/body/button")).click();
+//        driver.switchTo().parentFrame();
+//        System.out.println(driver.getTitle());
     }
     }
