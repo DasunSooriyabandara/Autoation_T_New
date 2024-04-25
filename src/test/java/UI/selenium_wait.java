@@ -6,39 +6,37 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
+
 import java.time.Duration;
 import java.util.NoSuchElementException;
 import java.util.concurrent.TimeUnit;
 
 public class selenium_wait {
-    public static void main(String[] args) {
-        System.setProperty("webdriver.chrome.driver", "path/to/chromedriver");
-        WebDriver driver = new ChromeDriver();
+	public static void main(String[] args) throws InterruptedException {
+		// Set up ChromeDriver using WebDriverManager
+		WebDriverManager.chromedriver().setup();
 
-        driver.get("https://example.com.au/");
-        driver.manage().window().maximize();
+		// Initialize ChromeDriver
+		ChromeDriver driver = new ChromeDriver();
 
-        // Implicit Wait
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		// Open Sauce Demo website
+		driver.get("https://www.singersl.com/");
 
-        // Finding the element using XPath
-        WebElement element = driver.findElement(By.xpath("//*[@id=\"vl-flyout-nav\"]/ul/li[2]/a"));
-        element.click();
+		// Maximize browser
+		driver.manage().window().maximize();
 
-        // Explicit Wait
-        WebDriverWait wait = new WebDriverWait(driver, 10);
-        WebElement explicitElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"vl-flyout-nav\"]/ul/li[2]/div[2]/div[1]/nav[2]/ul/li[1]/a")));
-        explicitElement.click();
+		// current URL
+		String currentUrl = driver.getCurrentUrl();
+		System.out.println(currentUrl);
 
-        // Fluent Wait
-        FluentWait<WebDriver> fluentWait = new FluentWait<>(driver)
-                .withTimeout(Duration.ofSeconds(10))
-                .pollingEvery(Duration.ofMillis(500))
-                .ignoring(NoSuchElementException.class);
+		// Get Title
+		String Title = driver.getTitle();
+		System.out.println("Title of the web" + Title);
 
-        WebElement fluentElement = fluentWait.until(driver -> driver.findElement(By.xpath("//*[@id=\"vl-flyout-nav\"]/ul/li[2]/div[2]/div[1]/nav[2]/ul/li[1]/a")));
-        fluentElement.click();
+		
+		
 
-        driver.quit();
-    }
+	}
+
 }
