@@ -1,0 +1,1 @@
+INDEX VERSION 1.134+E:\github\Autoation_T_New\.metadata\.plugins\org.eclipse.jdt.core
